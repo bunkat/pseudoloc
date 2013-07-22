@@ -5,8 +5,8 @@ pseudoloc = function() {
   pseudoloc.option = {};
   pseudoloc.reset = function() {
     pseudoloc.option = {
-      prepend: "[##",
-      append: "@@]",
+      prepend: "[!!",
+      append: "!!]",
       delimiter: "%",
       extend: 0,
       override: undefined
