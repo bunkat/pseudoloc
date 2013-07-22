@@ -53,7 +53,7 @@ The commandline tool uses the same options as the library. For additional help a
 
 #### Prepend
 
-Specifies that string that should be prepended to the beginning of pseudolocalized strings. The prepended and appended strings help to locate strings that have been improperly concatenated together - localized strings should use tokens for data since different languages have different word orders.
+Specifies the string that should be prepended to the beginning of pseudolocalized strings. The prepended and appended strings help to locate strings that have been cut off or improperly concatenated together - localized strings should use tokens for data since different languages have different word orders.
 
 Default is `[!!`.
 
@@ -63,7 +63,7 @@ Default is `[!!`.
 
 #### Append
 
-Specifies that string that should be appended to the end of pseudolocalized strings. The prepended and appended strings help to locate strings that have been improperly concatenated together - localized strings should use tokens for data since different languages have different word orders.
+Specifies the string that should be appended to the end of pseudolocalized strings. The prepended and appended strings help to locate strings that have been cut off or improperly concatenated together - localized strings should use tokens for data since different languages have different word orders.
 
 Default is `!!]`.
 
@@ -87,7 +87,7 @@ Extends the width of the string by the specified percentage. Useful if you will 
 
 Default is `0`.
 
-    pseudoloc.option.extend = 0.3;
+    pseudoloc.option.extend = 0.3; //30%
     pseudoloc.str('A test string with a %token%.')
     // [!!Ȃ ťēšť ŝťŕĩŉğ ŵĩťħ â %token%.        !!]
 
