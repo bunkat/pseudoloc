@@ -1,4 +1,4 @@
-# Pseudoloc v1.0.0 [![Build Status](https://travis-ci.org/bunkat/pseudoloc.png)](https://travis-ci.org/bunkat/pseudoloc)
+# Pseudoloc v1.0.1 [![Build Status](https://travis-ci.org/bunkat/pseudoloc.png)](https://travis-ci.org/bunkat/pseudoloc)
 
 _Pseudoloc_ is a tiny library for quickly pseudolocalizing strings. [Pseudolocalization](http://en.wikipedia.org/wiki/Pseudolocalization) is a method for testing the internationalization aspects of your application by replacing your strings with altered versions that maintains string readability while including the most problematic characteristics including text length and character length. It also makes hard coded strings and improperly concatenated strings easy to spot so that they can be properly localized.
 
