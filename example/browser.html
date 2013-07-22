@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+p {
+  font-size: 16pt;
+}
+
+</style>
+
+</body>
+
+<script src="../pseudoloc.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+  var str = 'Thank you for using %pseudoloc.js%.';
+
+  document.write("<h3>Before:</h3>");
+  document.write("<p>" + str + "</p>");
+
+  document.write("<h3>After:</h3>");
+  document.write("<p>" + pseudoloc.str(str) + "</p>");
+
+</script>
+</html>
