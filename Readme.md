@@ -21,7 +21,7 @@ _Pseudoloc_ is a small library for quickly pseudolocalizing strings. [Pseudoloca
 
 ## Using from the commandline
 
-_Pseudoloc_ includes a commandline interface to make easy to incorporate it into your build process. Currently it supports passing in individual strings (great for trying things out) or passing in a valid `JSON` document that contains a set of keys and strings. Each of the strings in the file will then be pseudolocalized.
+_Pseudoloc_ includes a commandline interface to make it easy to incorporate it into your build process. Currently it supports passing in individual strings (great for trying things out) or passing in a valid `JSON` document that contains a set of keys and strings. Each of the strings in the file will then be pseudolocalized.
 
 Note: Nodejs must be installed to use the commandline interface.
 
@@ -40,9 +40,9 @@ Note: Nodejs must be installed to use the commandline interface.
 
     // example-pseudo.json
     {
-      "string1": "[##ţĥĩş ĭś ťĥě ƒĩŗśŧ şţřįƞĝ@@]",
-      "string2": "[##ȁ ŝťŗĩňğ ŵįťĥ ã %token%@@]",
-      "string3": "[##ȃ şťřīňğ ŵĩťħ ä %couple% ŏƒ %tokens%@@]"
+      "string1": "[!!ţĥĩş ĭś ťĥě ƒĩŗśŧ şţřįƞĝ!!]",
+      "string2": "[!!ȁ ŝťŗĩňğ ŵįťĥ ã %token%!!]",
+      "string3": "[!!ȃ şťřīňğ ŵĩťħ ä %couple% ŏƒ %tokens%!!]"
     }
 
 The commandline tool uses the same options as the library. For additional help and more examples:
@@ -79,7 +79,7 @@ Default is `%`.
 
     pseudoloc.option.delimiter = '$$';
     pseudoloc.str('A test string with a $$token$$.')
-    // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą $$token$$.##]
+    // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą $$token$$.!!]
 
 #### Extend
 
@@ -88,7 +88,7 @@ Extends the width of the string by the specified percentage. Useful if you will 
 Default is `0`.
 
     pseudoloc.option.extend = 0.3;
-    pseudoloc.str('A test string with a $$token$$.')
+    pseudoloc.str('A test string with a %token%.')
     // [!!Ȃ ťēšť ŝťŕĩŉğ ŵĩťħ â %token%.        !!]
 
 
@@ -99,18 +99,8 @@ Specifies an override character that all characters in the string will be replac
 Default is `undefined`.
 
     pseudoloc.option.override = '_';
-    pseudoloc.str('A test string with a $$token$$.')
+    pseudoloc.str('A test string with a %token%.')
     // [!!_____________________%token%_!!]
-
-
-
-
-
-
-
-
-
-
 
 ## Installation
 Using npm:
