@@ -1,0 +1,5 @@
+{
+  "string1": "this is the first string",
+  "string2": "a string with a %token%",
+  "string3": "a string with a %couple% of %tokens%"
+}

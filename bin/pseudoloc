@@ -1,0 +1,97 @@
+#!/usr/bin/env node
+
+var program = require('commander'),
+    pseudoloc = require('../index'),
+    fs = require('fs'),
+    path = require('path');
+
+program
+  .version(pseudoloc.version)
+  .option('-d, --delimiter <val>', "sets the token delimiter (default: '%')")
+  .option('-p, --prepend <val>', "sets the string start tag (default: '[##')")
+  .option('-a, --append <val>', "sets the string end tag (default: '@@]')")
+  .option('-e, --extend <amount>', "sets the padding percentage (default: '0')", parseFloat)
+  .option('-o, --override <char>', "replaces all characters with specified character")
+  .option('-s, --string <str>', "string to pseudolocalize")
+  .option('-r, --readFile <path>', "path to file to pseudolocalize")
+  .option('-w, --writeFile <path>', "path of file to write results to");
+
+program.on('--help', function(){
+  console.log('  Examples:');
+  console.log('');
+
+  pseudoloc.option = {prepend: '[!!', append: '!!]'};
+  console.log('  Custom start and end tags');
+  console.log("    $ pseudoloc -p '[!!' -a '!!]' -s 'test'");
+  console.log("    > " + pseudoloc.str('test'));
+  console.log('');
+
+  pseudoloc.reset();
+  pseudoloc.option.override = '_';
+  pseudoloc.option.prepend = '';
+  pseudoloc.option.append = '';
+  console.log('  Replace strings with underscore to spot unlocalized strings');
+  console.log("    $ pseudoloc -p '' -a '' -o '_' -s 'test'");
+  console.log("    > " + pseudoloc.str('test'));
+  console.log('');
+
+  pseudoloc.reset();
+  pseudoloc.option.extend = 0.3;
+  console.log('  Extend strings to ensure space for localization');
+  console.log("    $ pseudoloc -e 0.3 -s 'test string'");
+  console.log("    > " + pseudoloc.str('test string'));
+  console.log('');
+
+  pseudoloc.reset();
+  console.log('  Pseudolocalize all strings in a JSON file');
+  console.log("    $ pseudoloc -r example.json -w example-pseudo.json");
+  console.log('');
+});
+
+program.parse(process.argv);
+
+if(!program.string && !program.readFile) {
+  console.log('  Either a string (-s) or a file (-f) must be specified.');
+  program.help();
+}
+
+pseudoloc.reset();
+var opts = {
+  delimiter: program.delimiter || pseudoloc.option.delimiter,
+  prepend: program.prepend || pseudoloc.option.prepend,
+  append: program.append || pseudoloc.option.append,
+  extend: program.extend || pseudoloc.option.extend,
+  override: program.override || pseudoloc.option.override
+}
+
+pseudoloc.option = opts;
+
+if(program.string) {
+  console.log(pseudoloc.str(program.string));
+}
+else {
+  fs.readFile(program.readFile, {encoding: 'utf8'}, function(err, data) {
+    if(err) {
+      console.error('  Unable to read file [' + program.readFile + '].');
+      return;
+    }
+
+    var result = JSON.parse(data);
+    for(var id in result) {
+      result[id] = pseudoloc.str(result[id]);
+    }
+
+    var dir = path.dirname(program.readFile),
+        ext = path.extname(program.readFile),
+        base = path.basename(program.readFile, ext),
+        out = program.writeFile || path.join(dir, base + '-pseudo' + ext);
+
+    fs.writeFile(out, JSON.stringify(result, null, 2), function(err) {
+      if(err) {
+        console.error('  Unable to write file [' + out + '].');
+        return;
+      }
+
+    });
+  });
+}
