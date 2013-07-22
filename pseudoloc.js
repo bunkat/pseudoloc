@@ -1,6 +1,6 @@
 pseudoloc = function() {
   var pseudoloc = {
-    version: "0.0.1"
+    version: "1.0.0"
   };
   pseudoloc.option = {};
   pseudoloc.reset = function() {
