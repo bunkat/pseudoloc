@@ -8,6 +8,8 @@ var program = require('commander'),
 program
   .version(pseudoloc.version)
   .option('-d, --delimiter <val>', "sets the token delimiter (default: '%')")
+  .option('-S, --startDelimiter <val>', "sets the start token delimiter (default: delimiter)")
+  .option('-E, --endDelimiter <val>', "sets the end token delimiter (default: delimiter)")
   .option('-p, --prepend <val>', "sets the string start tag (default: '[!!')")
   .option('-a, --append <val>', "sets the string end tag (default: '!!]')")
   .option('-e, --extend <amount>', "sets the padding percentage (default: '0')", parseFloat)
@@ -58,6 +60,8 @@ if(!program.string && !program.readFile) {
 pseudoloc.reset();
 var opts = {
   delimiter: program.delimiter || pseudoloc.option.delimiter,
+  startDelimiter: program.startDelimiter,
+  endDelimiter: program.endDelimiter,
   prepend: program.prepend || pseudoloc.option.prepend,
   append: program.append || pseudoloc.option.append,
   extend: program.extend || pseudoloc.option.extend,
