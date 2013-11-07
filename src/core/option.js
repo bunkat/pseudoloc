@@ -15,6 +15,8 @@ pseudoloc.reset = function() {
     prepend: '[!!',
     append: '!!]',
     delimiter: '%',
+    startDelimiter: '',
+    endDelimiter: '',
     extend: 0,
     override: undefined
   };

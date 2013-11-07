@@ -46,6 +46,14 @@ describe('pseudoloc.str', function() {
     s1.indexOf('~this~').should.not.eql(-1);
   });
 
+  it('should use the specified start and end delimiter for escaped string', function() {
+    pseudoloc.option.startDelimiter = '{{';
+    pseudoloc.option.endDelimiter = '}}';
+    var s1 = pseudoloc.str('test{{this two}}string');
+
+    s1.indexOf('{{this two}}').should.not.eql(-1);
+  });
+
   it('should support multicharacter delimiters', function() {
     pseudoloc.option.delimiter = '%%';
     var s1 = pseudoloc.str('test %%this%% string');
