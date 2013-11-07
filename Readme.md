@@ -1,4 +1,4 @@
-# Pseudoloc v1.0.1 [![Build Status](https://travis-ci.org/bunkat/pseudoloc.png)](https://travis-ci.org/bunkat/pseudoloc)
+# Pseudoloc v1.1.0 [![Build Status](https://travis-ci.org/bunkat/pseudoloc.png)](https://travis-ci.org/bunkat/pseudoloc)
 
 _Pseudoloc_ is a small library for quickly pseudolocalizing strings. [Pseudolocalization](http://en.wikipedia.org/wiki/Pseudolocalization) is a method for testing the internationalization aspects of your application by replacing your strings with altered versions that maintains string readability while including the most problematic characteristics including text length and character length. It also makes hard coded strings and improperly concatenated strings easy to spot so that they can be properly localized.
 
@@ -71,15 +71,20 @@ Default is `!!]`.
     pseudoloc.str('A test string with a %token%.')
     // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą %token%.##]
 
-#### Delimiter
+#### Delimiter, StartDelimiter, EndDelimiter
 
-Specifies the token delimiter. Any characters between token delimiters will not be pseudolocalized. Tokens are used to replace data within localized strings.
+Specifies the token delimiter. Any characters between token delimiters will not be pseudolocalized. Tokens are used to replace data within localized strings. You can either specify a single delimiter or use startDelimiter and endDelimiter to specify the delimiters seperately.
 
 Default is `%`.
 
     pseudoloc.option.delimiter = '$$';
     pseudoloc.str('A test string with a $$token$$.')
     // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą $$token$$.!!]
+
+    pseudoloc.option.startDelimiter = '{{';
+    pseudoloc.option.endDelimiter = '}}';
+    pseudoloc.str('A test string with a {{token}}.')
+    // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą {{token}}.!!]
 
 #### Extend
 
