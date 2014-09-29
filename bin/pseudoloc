@@ -81,9 +81,7 @@ else {
     }
 
     var result = JSON.parse(data);
-    for(var id in result) {
-      result[id] = pseudoloc.str(result[id]);
-    }
+    plocObject(result);
 
     var dir = path.dirname(program.readFile),
         ext = path.extname(program.readFile),
@@ -98,4 +96,14 @@ else {
 
     });
   });
+}
+
+var plocObject = function(array) { 
+  for (var x in array) { 
+    if (typeof(array[x]) === "object") { 
+      plocObject(array[x]); 
+    } else { 
+      array[x] = pseudoloc.str(array[x]); 
+    } 
+  } 
 }
