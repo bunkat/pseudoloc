@@ -21,7 +21,7 @@ _Pseudoloc_ is a small library for quickly pseudolocalizing strings. [Pseudoloca
 
 ## Using from the commandline
 
-_Pseudoloc_ includes a commandline interface to make it easy to incorporate it into your build process. Currently it supports passing in individual strings (great for trying things out) or passing in a valid `JSON` document that contains a set of keys and strings. Each of the strings in the file will then be pseudolocalized.
+_Pseudoloc_ includes a commandline interface to make it easy to incorporate it into your build process. Currently it supports passing in individual strings (great for trying things out) or passing in a valid `JSON` document. Each of the value in the file that is a string will then be pseudolocalized.
 
 Note: Nodejs must be installed to use the commandline interface.
 
@@ -33,16 +33,26 @@ Note: Nodejs must be installed to use the commandline interface.
     {
       "string1": "this is the first string",
       "string2": "a string with a %token%",
-      "string3": "a string with a %couple% of %tokens%"
+      "string3": "a string with a %couple% of %tokens%",
+      "obj1": {
+        "string1": "this is the first string",
+        "string2": "a string with a %token%",
+        "string3": "a string with a %couple% of %tokens%"
+      }
     }
 
     ./bin/pseudoloc -readFile example.json -writeFile example-pseudo.json
 
     // example-pseudo.json
     {
-      "string1": "[!!ţĥĩş ĭś ťĥě ƒĩŗśŧ şţřįƞĝ!!]",
-      "string2": "[!!ȁ ŝťŗĩňğ ŵįťĥ ã %token%!!]",
-      "string3": "[!!ȃ şťřīňğ ŵĩťħ ä %couple% ŏƒ %tokens%!!]"
+      "string1": "[!!ţĥıś ıś ţĥę ƒıŕśţ śţŕıńĝ!!]",
+      "string2": "[!!ȃ šŧřįƞģ ŵįŧħ ȃ %token%!!]",
+      "string3": "[!!à śţŕīńĝ ŵīţĥ à %couple% ōƒ %tokens%!!]",
+      "obj1": {
+        "string1": "[!!ţĥıś ıś ţĥę ƒıŕśţ śţŕıńĝ!!]",
+        "string2": "[!!ȃ šŧřįƞģ ŵįŧħ ȃ %token%!!]",
+        "string3": "[!!à śţŕīńĝ ŵīţĥ à %couple% ōƒ %tokens%!!]"
+      }
     }
 
 The commandline tool uses the same options as the library. For additional help and more examples:

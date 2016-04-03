@@ -81,9 +81,7 @@ else {
     }
 
     var result = JSON.parse(data);
-    for(var id in result) {
-      result[id] = pseudoloc.str(result[id]);
-    }
+    pseudoloc.obj(result);
 
     var dir = path.dirname(program.readFile),
         ext = path.extname(program.readFile),
