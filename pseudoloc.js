@@ -98,5 +98,22 @@ pseudoloc = function() {
     }
     return opts.prepend + pseudoloc.pad(result, opts.extend) + opts.append;
   };
+  pseudoloc.obj = function(obj) {
+    for (var id in obj) {
+      switch (typeof obj[id]) {
+       case "string":
+        obj[id] = pseudoloc.str(obj[id]);
+        break;
+
+       case "object":
+        pseudoloc.obj(obj[id]);
+        break;
+
+       default:
+        continue;
+      }
+    }
+    return obj;
+  };
   return pseudoloc;
 }();
