@@ -13,7 +13,7 @@ pseudoloc.str = function(str) {
   var opts = pseudoloc.option,
       startdelim = opts.startDelimiter || opts.delimiter,
       enddelim = opts.endDelimiter || opts.delimiter,
-      re = new RegExp(startdelim + '\\s*[\\w\\.\\s*]+\\s*' + enddelim, 'g'),
+      re = new RegExp(startdelim + opts.excludeContentRegex + enddelim, 'g'),
       m, tokens = [], i = 0, tokenIdx = 0, result = '', c, pc;
 
   while((m = re.exec(str))) {
