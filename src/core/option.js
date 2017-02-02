@@ -18,7 +18,8 @@ pseudoloc.reset = function() {
     startDelimiter: '',
     endDelimiter: '',
     extend: 0,
-    override: undefined
+    override: undefined,
+    excludeContentRegex: '\\s*[\\w\\.\\s*]+\\s*',
   };
 };
 

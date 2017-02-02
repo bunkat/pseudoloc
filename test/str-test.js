@@ -91,4 +91,11 @@ describe('pseudoloc.str', function() {
     s1.should.eql('_____________________');
   });
 
+  it('should allow custom exclude content regex', function() {
+    pseudoloc.option.excludeContentRegex = '\\s*[,\\w\\.\\s*]+\\s*';
+
+    var s1 = pseudoloc.str('this is a %test,test2% string');
+    s1.indexOf('%test,test2%').should.not.eql(-1);
+  });
+
 });
