@@ -89,7 +89,11 @@ pseudoloc = function() {
       }
       c = opts.override !== undefined ? opts.override : str[i];
       pc = pseudoloc.table[c];
-      result += pc ? pc[Math.random() * pc.length | 0] : c;
+      if (pc) {
+        var diacriticalIndex = str.length % pc.length;
+        c = pc[diacriticalIndex];
+      }
+      result += c;
       i++;
     }
     return opts.prepend + pseudoloc.pad(result, opts.extend) + opts.append;
