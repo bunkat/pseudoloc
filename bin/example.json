@@ -1,5 +1,15 @@
 {
   "string1": "this is the first string",
   "string2": "a string with a %token%",
-  "string3": "a string with a %couple% of %tokens%"
+  "string3": "a string with a %couple% of %tokens%",
+  "deep1": {
+    "string1": "this is the second string",
+    "string2": "a string with a %token%",
+    "string3": "a string with a %couple% of %tokens%",
+    "deep2": {
+      "string1": "this is the third string",
+      "string2": "a string with a %token%",
+      "string3": "a string with a %couple% of %tokens%"
+    }
+  }
 }

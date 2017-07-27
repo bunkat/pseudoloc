@@ -64,9 +64,12 @@ pseudoloc = function() {
     z: String.fromCharCode(378, 380, 382, 438)
   };
   pseudoloc.pad = function(str, percent) {
-    var len = Math.floor(str.length * percent), pStr = str;
-    while (len--) {
-      pStr += " ";
+    var lenLeft = Math.floor(str.length * percent / 2), lenRight = lenLeft, pStr = str;
+    while (lenLeft-- > 0) {
+      pStr = " " + pStr;
+    }
+    while (lenRight-- > 0) {
+      pStr = pStr + " ";
     }
     return pStr;
   };

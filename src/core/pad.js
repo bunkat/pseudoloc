@@ -8,13 +8,18 @@
 * For all details and documentation:
 *     http://bunkat.github.com/pseudoloc
 */
-pseudoloc.pad = function(str, percent) {
+pseudoloc.pad = function (str, percent) {
 
-  var len = Math.floor(str.length * percent),
-      pStr = str;
+  var lenLeft = Math.floor((str.length * percent) / 2),
+    lenRight = lenLeft,
+    pStr = str;
 
-  while(len--) {
-    pStr += ' ';
+  while (lenLeft-- > 0) {
+    pStr = ' ' + pStr;
+  }
+
+  while (lenRight-- > 0) {
+    pStr = pStr + ' ';
   }
 
   return pStr;
