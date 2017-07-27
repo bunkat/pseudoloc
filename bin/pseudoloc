@@ -79,7 +79,7 @@ else {
       for (var id in _r) {
         if (typeof _r[id] === 'string') {
           _r[id] = pseudoloc.str(_r[id]);
-        } else {
+        } else if (typeof _r[id] === 'object') {
           process(_r[id]);
         }
       }

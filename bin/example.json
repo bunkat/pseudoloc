@@ -2,6 +2,7 @@
   "string1": "this is the first string",
   "string2": "a string with a %token%",
   "string3": "a string with a %couple% of %tokens%",
+  "numbers": 123456790,
   "deep1": {
     "string1": "this is the second string",
     "string2": "a string with a %token%",
