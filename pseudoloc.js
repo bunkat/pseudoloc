@@ -66,7 +66,8 @@ pseudoloc = function() {
   pseudoloc.pad = function(str, percent) {
     var len = Math.floor(str.length * percent), pStr = str;
     while (len--) {
-      pStr += " ";
+      var ar = [ 'ö', 'ä', 'ఛ', 'ฒ', '開', '开', '開', 'अ', '_'];
+      pStr += ar[len];
     }
     return pStr;
   };
