@@ -66,11 +66,11 @@ pseudoloc = function() {
   pseudoloc.pad = function(str, percent) {
     var len = Math.floor(str.length * percent), pStr = str;
     while (len--) {
-      var ar = [ 'ö', '🐔', 'ఛ', 'ฒ', ' ', 'そ', '開', 'अ', '㤌', 'కె'];
-      var tg = Math.floor(Math.random() * 10)
-      pStr += ar[tg];
+      var array = [ 'ö', '🐔', 'ఛ', 'ฒ', ' ', 'そ', '開', 'अ', '㤌', 'కె'];
+      var tot = Math.floor(Math.random() * 10)
+      pStr += array[tot];
      }
-    }
+    
     return pStr;
   };
   pseudoloc.str = function(str) {
