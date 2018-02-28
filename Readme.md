@@ -99,13 +99,15 @@ Default is `%`.
 #### Extend
 
 Extends the width of the string by the specified percentage. Useful if you will be localizing into languages such as German which can be 30% longer than English.
+We extend it by a set of predefined Asian characters.
 
 Default is `0`.
 
     pseudoloc.option.extend = 0.3; //30%
     pseudoloc.str('A test string with a %token%.')
-    // [!!Ȃ ťēšť ŝťŕĩŉğ ŵĩťħ â %token%.        !!]
+    // [!!Ȃ ťēšť ŝťŕĩŉğ ŵĩťħ â %token%. öఛฒそ!!]
 
+New update: Extends the width of the string by the specified percentage will be filled with Asian characters including emoji.
 
 #### Override
 
