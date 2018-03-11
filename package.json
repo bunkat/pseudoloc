@@ -1,37 +1,37 @@
 {
-  "name": "pseudoloc-js",
-  "version": "1.0.0",
-  "description": "Simple pseudoloc (psuedolocalization) for strings, forked from github.com/bunkat/pseudoloc",
-  "keywords": [
-    "localization",
-    "psuedoloc"
-  ],
-  "author": "jacalata <jacalata@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jacalata/pseudoloc.git"
-  },
-  "main": "index.js",
-  "browserify": "index-browserify.js",
-  "jam": {
-    "main": "psuedoloc.js",
-    "shim": {
-      "exports": "pseudoloc"
+    "name": "pseudoloc-js",
+    "version": "1.1.0",
+    "description": "Simple pseudoloc (psuedolocalization) for strings, forked from github.com/bunkat/pseudoloc",
+    "keywords": [
+        "localization",
+        "psuedoloc"
+    ],
+    "author": "jacalata <jacalata@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/jacalata/pseudoloc.git"
+    },
+    "main": "index.js",
+    "browserify": "index-browserify.js",
+    "jam": {
+        "main": "psuedoloc.js",
+        "shim": {
+            "exports": "pseudoloc"
+        }
+    },
+    "dependencies": {
+        "commander": "*"
+    },
+    "devDependencies": {
+        "smash": "~0.0.8",
+        "mocha": "*",
+        "should": ">=0.6.3",
+        "jslint": "*",
+        "uglify-js": "*",
+        "benchmark": "*"
+    },
+    "license": "MIT",
+    "scripts": {
+        "test": "./node_modules/.bin/mocha test/**/*-test.js"
     }
-  },
-  "dependencies": {
-    "commander": "*"
-  },
-  "devDependencies": {
-    "smash": "~0.0.8",
-    "mocha": "*",
-    "should": ">=0.6.3",
-    "jslint": "*",
-    "uglify-js": "*",
-    "benchmark": "*"
-  },
-  "license": "MIT",
-  "scripts": {
-    "test": "./node_modules/.bin/mocha test/**/*-test.js"
-  }
 }
