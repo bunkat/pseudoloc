@@ -66,8 +66,11 @@ pseudoloc = function() {
   pseudoloc.pad = function(str, percent) {
     var len = Math.floor(str.length * percent), pStr = str;
     while (len--) {
-      pStr += " ";
-    }
+      var array = [ 'ö', '🐔', 'ఛ', 'ฒ', ' ', 'そ', '開', 'अ', '㤌', 'కె'];
+      var tot = Math.floor(Math.random() * 10)
+      pStr += array[tot];
+     }
+    
     return pStr;
   };
   pseudoloc.str = function(str) {
@@ -97,6 +100,23 @@ pseudoloc = function() {
       i++;
     }
     return opts.prepend + pseudoloc.pad(result, opts.extend) + opts.append;
+  };
+  pseudoloc.obj = function(obj) {
+    for (var id in obj) {
+      switch (typeof obj[id]) {
+       case "string":
+        obj[id] = pseudoloc.str(obj[id]);
+        break;
+
+       case "object":
+        pseudoloc.obj(obj[id]);
+        break;
+
+       default:
+        continue;
+      }
+    }
+    return obj;
   };
   return pseudoloc;
 }();

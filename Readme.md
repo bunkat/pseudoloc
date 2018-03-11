@@ -21,11 +21,11 @@ _Pseudoloc_ is a small library for quickly pseudolocalizing strings. [Pseudoloca
 
 ## Using from the commandline
 
-_Pseudoloc_ includes a commandline interface to make it easy to incorporate it into your build process. Currently it supports passing in individual strings (great for trying things out) or passing in a valid `JSON` document that contains a set of keys and strings. Each of the strings in the file will then be pseudolocalized.
+_Pseudoloc_ includes a commandline interface to make it easy to incorporate it into your build process. Currently it supports passing in individual strings (great for trying things out) or passing in a valid `JSON` document. Each of the value in the file that is a string will then be pseudolocalized.
 
 Note: Nodejs must be installed to use the commandline interface.
 
-    ./bin/pseudoloc -string 'A test string with a %token%.'
+    node ./bin/pseudoloc -string 'A test string with a %token%.'
     // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą %token%.!!]
 
 
@@ -33,21 +33,31 @@ Note: Nodejs must be installed to use the commandline interface.
     {
       "string1": "this is the first string",
       "string2": "a string with a %token%",
-      "string3": "a string with a %couple% of %tokens%"
+      "string3": "a string with a %couple% of %tokens%",
+      "obj1": {
+        "string1": "this is the first string",
+        "string2": "a string with a %token%",
+        "string3": "a string with a %couple% of %tokens%"
+      }
     }
 
-    ./bin/pseudoloc -readFile example.json -writeFile example-pseudo.json
+    node ./bin/pseudoloc -readFile example.json -writeFile example-pseudo.json
 
     // example-pseudo.json
     {
-      "string1": "[!!ţĥĩş ĭś ťĥě ƒĩŗśŧ şţřįƞĝ!!]",
-      "string2": "[!!ȁ ŝťŗĩňğ ŵįťĥ ã %token%!!]",
-      "string3": "[!!ȃ şťřīňğ ŵĩťħ ä %couple% ŏƒ %tokens%!!]"
+      "string1": "[!!ţĥıś ıś ţĥę ƒıŕśţ śţŕıńĝ!!]",
+      "string2": "[!!ȃ šŧřįƞģ ŵįŧħ ȃ %token%!!]",
+      "string3": "[!!à śţŕīńĝ ŵīţĥ à %couple% ōƒ %tokens%!!]",
+      "obj1": {
+        "string1": "[!!ţĥıś ıś ţĥę ƒıŕśţ śţŕıńĝ!!]",
+        "string2": "[!!ȃ šŧřįƞģ ŵįŧħ ȃ %token%!!]",
+        "string3": "[!!à śţŕīńĝ ŵīţĥ à %couple% ōƒ %tokens%!!]"
+      }
     }
 
 The commandline tool uses the same options as the library. For additional help and more examples:
 
-    ./bin/pseudoloc --help
+    node ./bin/pseudoloc --help
 
 ## Options
 
@@ -89,13 +99,15 @@ Default is `%`.
 #### Extend
 
 Extends the width of the string by the specified percentage. Useful if you will be localizing into languages such as German which can be 30% longer than English.
+We extend the string by randomly selecting characters from a predefined array of non-ASCII characters.
 
 Default is `0`.
 
     pseudoloc.option.extend = 0.3; //30%
     pseudoloc.str('A test string with a %token%.')
-    // [!!Ȃ ťēšť ŝťŕĩŉğ ŵĩťħ â %token%.        !!]
+    // [!!Ȃ ťēšť ŝťŕĩŉğ ŵĩťħ â %token%. öఛฒそ!!]
 
+New update: Extends the width of the string by the specified percentage will be filled with predefined array of non-ASCII characters.
 
 #### Override
 
