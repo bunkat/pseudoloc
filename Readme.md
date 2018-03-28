@@ -19,6 +19,13 @@ _Pseudoloc_ is a small library for quickly pseudolocalizing strings. [Pseudoloca
 
     </script>
 
+## Using with webpack/browserify
+
+    var pseudoloc = require('pseudoloc/index-browserify');
+
+    pseudoloc.str('A test string with a %token%.')
+    // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą %token%.!!]
+
 ## Using from the commandline
 
 _Pseudoloc_ includes a commandline interface to make it easy to incorporate it into your build process. Currently it supports passing in individual strings (great for trying things out) or passing in a valid `JSON` document that contains a set of keys and strings. Each of the strings in the file will then be pseudolocalized.
