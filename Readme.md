@@ -32,7 +32,7 @@ _Pseudoloc_ includes a commandline interface to make it easy to incorporate it i
 
 Note: Nodejs must be installed to use the commandline interface.
 
-    ./bin/pseudoloc -string 'A test string with a %token%.'
+    node ./bin/pseudoloc -string 'A test string with a %token%.'
     // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą %token%.!!]
 
 
@@ -43,7 +43,7 @@ Note: Nodejs must be installed to use the commandline interface.
       "string3": "a string with a %couple% of %tokens%"
     }
 
-    ./bin/pseudoloc -readFile example.json -writeFile example-pseudo.json
+    node ./bin/pseudoloc -readFile example.json -writeFile example-pseudo.json
 
     // example-pseudo.json
     {
@@ -54,7 +54,7 @@ Note: Nodejs must be installed to use the commandline interface.
 
 The commandline tool uses the same options as the library. For additional help and more examples:
 
-    ./bin/pseudoloc --help
+    node ./bin/pseudoloc --help
 
 ## Options
 
