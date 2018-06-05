@@ -27,11 +27,14 @@
         "mocha": "*",
         "should": ">=0.6.3",
         "jslint": "*",
-        "uglify-js": "*",
+        "uglify-js": "3.3.28",
         "benchmark": "*"
     },
     "license": "MIT",
     "scripts": {
-        "test": "./node_modules/.bin/mocha test/**/*-test.js"
+        "build": "node_modules/.bin/smash src/pseudoloc.js | node_modules/.bin/uglifyjs -b indent_level=2 -o pseudoloc.js",
+        "test": "npm run build && ./node_modules/.bin/mocha test/**/*-test.js",
+        "minify": "npm run build && node_modules/.bin/uglifyjs pseudoloc.js -c -m -o pseudoloc.min.js",
+        "benchmark": "node benchmark/bench.js"
     }
 }

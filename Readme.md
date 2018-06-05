@@ -122,22 +122,28 @@ Default is `undefined`.
 ## Installation
 Using npm:
 
-    $ npm install pseudoloc
+    $ npm install pseudoloc-js
 
 ## Building
 
+To build the javascript files for _pseudoloc_, run `npm install` to install dependencies and then:
+
+    $ npm run build
+
+## Making minified build
+
 To build the minified javascript files for _pseudoloc_, run `npm install` to install dependencies and then:
 
-    $ make build
+    $ npm run minify
 
 ## Running tests
 
 To run the tests for _pseudoloc_, run `npm install` to install dependencies and then:
 
-    $ make test
+    $ npm run test
 
 ## Running benchmarks
 
 To run the benchmarks for _pseudoloc_, run `npm install` to install dependencies and then:
 
-    $ make benchmark
+    $ npm run benchmark
