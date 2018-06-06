@@ -73,7 +73,23 @@ pseudoloc = function() {
     return pStr;
   };
   pseudoloc.str = function(str) {
-    var opts = pseudoloc.option, startdelim = opts.startDelimiter || opts.delimiter, enddelim = opts.endDelimiter || opts.delimiter, re = new RegExp(startdelim + "\\s*[\\w\\.\\s*]+\\s*" + enddelim, "g"), m, tokens = [], i = 0, tokenIdx = 0, result = "", c, pc;
+    function makeTokenRegex(delims, tokenNameDelim) {
+      var tokenMatchers = delims.reduce(function(result, delim) {
+        if (delim.hasOwnProperty("both")) {
+          result.push(delim.both + tokenNameDelim + delim.both);
+        } else if (delim.hasOwnProperty("start") && delim.hasOwnProperty("end")) {
+          result.push(delim.start + tokenNameDelim + delim.end);
+        } else if (delim.hasOwnProperty("full")) {
+          result.push(delim.full);
+        }
+        return result;
+      }, []);
+      return new RegExp(tokenMatchers.join("|"), "g");
+    }
+    var opts = pseudoloc.option, tokenNameDelim = "\\s*[\\w\\.\\s*]+\\s*", startdelim = opts.startDelimiter || opts.delimiter, enddelim = opts.endDelimiter || opts.delimiter, delims = opts.delimiters || [ {
+      start: startdelim,
+      end: enddelim
+    } ], re = makeTokenRegex(delims, tokenNameDelim), m, tokens = [], i = 0, tokenIdx = 0, result = "", c, pc;
     while (m = re.exec(str)) {
       tokens.push(m);
     }

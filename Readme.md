@@ -81,7 +81,7 @@ Default is `!!]`.
     pseudoloc.str('A test string with a %token%.')
     // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą %token%.##]
 
-#### Delimiter, StartDelimiter, EndDelimiter
+#### Delimiter, StartDelimiter, EndDelimiter, Delimiters
 
 Specifies the token delimiter. Any characters between token delimiters will not be pseudolocalized. Tokens are used to replace data within localized strings. You can either specify a single delimiter or use startDelimiter and endDelimiter to specify the delimiters seperately.
 
@@ -95,6 +95,39 @@ Default is `%`.
     pseudoloc.option.endDelimiter = '}}';
     pseudoloc.str('A test string with a {{token}}.')
     // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą {{token}}.!!]
+
+If you need to support multiple types of delimiters, you can pass an array of delimiters (single or pairs) to the `delimiters` option.
+
+The `delimiters` option takes an array of objects. Set properties on the objects as follows:
+
+  * `{ start, end }`: specifies a pair of start and end delimiters, just like using `startDelimiter` and `endDelimiter`:
+    ```
+    { start: '<', end: '>' }
+    ```
+
+  * `{ both }`: specifies a marker to use as both the start and end delimiters, just like using `delimiter`
+    ```
+    { both: '$$' }
+    ```
+
+  * `{ full }`: specifies the entire pattern for the delimiter. This is useful for cases where the token doesn't have a start marker, name, and end marker, for example with printf-style placeholders `%s`, `%d`, etc.
+    ```
+    { full: '%d' }
+    ```
+
+Under the hood these strings are combined into a pattern that eventually is compiled into a RegExp. That can affect you in a couple of ways:
+
+  1. You can use regular expression matchers in your delimiters
+  2. If your delimiter includes any characters that are special characters in regular expressions, they will need to be escaped
+
+For example, to match named sprintf-style placeholders (such as `%(name)s`), you need to escape the parentheses:
+
+    // Note the double-backslash, which becomes a `\(` in the string
+    pseudoloc.option.startDelimiter = '%\\(';
+    // Note the square brackets, so it matches `)s` or `)d`
+    pseudoloc.option.endDelimiter = '\\)[sd]';
+    pseudoloc.str('A test string with a %(token)s.');
+    // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą %(token)s.!!]
 
 #### Extend
 
