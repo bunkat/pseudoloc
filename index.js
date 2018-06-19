@@ -5,7 +5,7 @@ globals.forEach(function(g) {
   if (g in global) globalValues[g] = global[g];
 });
 
-require(process.env['PSEUDOLOC_COV'] ? "./pseudoloc-cov" : "./pseudoloc");
+require("./pseudoloc");
 
 module.exports = pseudoloc;
 
