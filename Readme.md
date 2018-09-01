@@ -26,13 +26,13 @@ _Pseudoloc_ is a small library for quickly pseudolocalizing strings. [Pseudoloca
     pseudoloc.str('A test string with a %token%.')
     // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą %token%.!!]
 
-## Using from the commandline
+## Using from the command line
 
-_Pseudoloc_ includes a commandline interface to make it easy to incorporate it into your build process. Currently it supports passing in individual strings (great for trying things out) or passing in a valid `JSON` document that contains a set of keys and strings. Each of the strings in the file will then be pseudolocalized.
+_Pseudoloc_ includes a command line interface to make it easy to incorporate it into your build process. Currently it supports passing in individual strings (great for trying things out) or passing in a valid `JSON` document that contains a set of keys and strings. Each of the strings in the file will then be pseudolocalized.
 
-Note: Nodejs must be installed to use the commandline interface.
+Note: Nodejs must be installed to use the command line interface.
 
-    ./bin/pseudoloc -string 'A test string with a %token%.'
+    ./bin/pseudoloc --string 'A test string with a %token%.'
     // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą %token%.!!]
 
 
@@ -43,7 +43,7 @@ Note: Nodejs must be installed to use the commandline interface.
       "string3": "a string with a %couple% of %tokens%"
     }
 
-    ./bin/pseudoloc -readFile example.json -writeFile example-pseudo.json
+    ./bin/pseudoloc --readFile example.json --writeFile example-pseudo.json
 
     // example-pseudo.json
     {
@@ -52,7 +52,7 @@ Note: Nodejs must be installed to use the commandline interface.
       "string3": "[!!ȃ şťřīňğ ŵĩťħ ä %couple% ŏƒ %tokens%!!]"
     }
 
-The commandline tool uses the same options as the library. For additional help and more examples:
+The command line tool uses the same options as the library. For additional help and more examples:
 
     ./bin/pseudoloc --help
 
