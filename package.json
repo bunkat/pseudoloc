@@ -1,6 +1,6 @@
 {
     "name": "pseudoloc-js",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Simple pseudoloc (psuedolocalization) for strings, forked from github.com/bunkat/pseudoloc",
     "keywords": [
         "localization",

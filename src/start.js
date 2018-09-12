@@ -6,4 +6,4 @@
 *     http://bunkat.github.com/pseudoloc
 */
 pseudoloc = (function() {
-  var pseudoloc = {version: "1.2.0"}; // semver
+  var pseudoloc = {version: "1.2.1"}; // semver
