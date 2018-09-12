@@ -25,7 +25,7 @@ _Pseudoloc_ includes a commandline interface to make it easy to incorporate it i
 
 Note: Nodejs must be installed to use the commandline interface.
 
-    node ./bin/pseudoloc -string 'A test string with a %token%.'
+    node ./bin/pseudoloc --string 'A test string with a %token%.'
     // [!!Á ţȇšŧ śťřīņğ ŵıţħ ą %token%.!!]
 
 
