@@ -117,7 +117,7 @@ describe('pseudoloc.str', function() {
         var sInput = 'this is a test string';
         var s1 = pseudoloc.str(sInput);
         var lenInput = sInput.length;
-        s1.length.should.eql(32); // lazy accounting for double-byte padding characters
+        s1.length.should.eql(35); // lazy accounting for double-byte padding characters
     });
 
     it('should support a custom start token', function() {
