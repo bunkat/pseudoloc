@@ -19,6 +19,9 @@
             "exports": "pseudoloc"
         }
     },
+    "bin": {
+        "pseudoloc": "./bin/pseudoloc"
+    },
     "dependencies": {
         "commander": "*"
     },
