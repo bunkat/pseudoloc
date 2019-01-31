@@ -1,6 +1,6 @@
 {
     "name": "pseudoloc-js",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "Simple pseudoloc (psuedolocalization) for strings, forked from github.com/bunkat/pseudoloc",
     "keywords": [
         "localization",
@@ -36,8 +36,11 @@
     "license": "MIT",
     "scripts": {
         "build": "./node_modules/.bin/uglifyjs -b indent_level=2 -o pseudoloc.js | ./node_modules/.bin/smash src/pseudoloc.js",
-        "test": "npm run build && ./node_modules/.bin/mocha test/**/*-test.js",
-        "minify": "npm run build && ./node_modules/.bin/uglifyjs pseudoloc.js -c -m -o pseudoloc.min.js",
-        "benchmark": "node ./benchmark/bench.js"
+        "buildWin": "node_modules\\.bin\\smash src\\pseudoloc.js | node_modules\\.bin\\uglifyjs -b indent_level=2 -o pseudoloc.js",
+        "test": "./node_modules/.bin/mocha test/**/*-test.js",
+        "minify": "./node_modules/.bin/uglifyjs pseudoloc.js -c -m -o pseudoloc.min.js",
+        "benchmark": "node ./benchmark/bench.js",
+        "clean": "del pseudoloc.js && del pseudoloc.min.js",
+        "publish": "npm run buildWin && npm run minify && npm run test && node publish"
     }
 }
